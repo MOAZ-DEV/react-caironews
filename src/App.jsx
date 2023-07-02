@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import HotNewsBannersComponent from "./components/HotNewsBannersComponent";
-import TopHeadingsComponent from "./components/TopHeadingsComponent.jsx";
 import Nav from "./components/Nav.jsx";
 import "./scss/App.scss";
 
@@ -73,7 +72,6 @@ function App() {
       <Nav categos={categos} recatego={recatego} />
       <div className="wraper">
         <HotNewsBannersComponent categos={categos} pageNum={pageNum}/>
-        <TopHeadingsComponent />
       </div>
 
     </div>
