@@ -7,7 +7,7 @@ function TopHeadingsComponent(props) {
 
     useEffect(() => {
 
-        var api_key = "78f0aa6465454f1eb935a2c6c7541917",
+        var api_key_1 = "78f0aa6465454f1eb935a2c6c7541917",
             api_key_2 = "7bb925a297924e1d8197d89f65054ed6",
             api_key_3 = "3ae0da6375b745bb8f08f6e358df2fd9",
 
