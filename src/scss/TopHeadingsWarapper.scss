@@ -1,0 +1,106 @@
+@import "./fonts.scss";
+@import "./Funcs&mixins.scss";
+
+.TopHeadingsWarapper {
+    height   : 90vh;
+    min-width: clamp(300px, 25vw, 300px);
+    max-width: clamp(300px, 35vw, 400px);
+    
+    display        : grid;
+    
+position: sticky;
+top: 5vh;
+
+overflow: hidden;
+overflow-y: auto ;
+
+    background: #000000db;
+
+    @include sc("mn") {
+        grid-template-columns: repeat(1, auto);
+    }
+
+    @include sc("sm") {
+        grid-template-columns: repeat(1, auto);
+    }
+
+    @include scx("lg") {
+    }
+
+    @include scx("xl") {
+        display: none;
+    }
+
+    @include sc("xxl") {
+        grid-template-columns: repeat(1, auto);
+    }
+
+    .lable {
+        width         : auto;
+
+        text-align    : end;
+        text-transform: uppercase;
+
+        background: #00000046;
+        backdrop-filter: blur(5px);
+        border-bottom: #ff7700 solid .5px;
+        color: #ff7700;
+
+        padding: 25px;
+
+        z-index: 20;
+        position: sticky;
+        top: 0;
+
+        @include h4-bd;
+    }
+.wrap {
+    display        : flex;
+    flex-direction : column;
+    justify-content: left;
+    align-items    : end;
+
+}
+    .item {
+        min-height: fit-content;
+
+        display   : inline-block;
+        direction: rtl;
+
+        border-top: #ffffff3a solid .5px;
+        
+        box-sizing: border-box;
+        padding   : 12px 25px;
+        
+        gap: 14px;
+        
+        img {
+            width    : 100%;
+            max-width: fill-available;
+        }
+        .title {
+            @include h5-bd;
+            cursor       : pointer;
+            overflow-wrap: break-word;
+            line-break   : 2;
+
+            a {
+                color: #fff;
+                text-decoration: none;
+                direction: rtl;
+
+                a:hover {
+                    text-decoration-color: blue;
+                    text-decoration      : underline;
+                }
+            }
+        }
+        .sub {
+            margin-right: auto;
+            @include h6-bd;
+            cursor: unset;
+            color: #fff;
+            opacity: .4;
+        }
+    }
+}

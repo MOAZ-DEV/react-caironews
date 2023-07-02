@@ -1,0 +1,172 @@
+@import "./fonts.scss";
+@import "./Funcs&mixins.scss";
+
+* {
+    height               : fit-content;
+    width                : fit-content;
+    padding              : 0;
+    margin               : 0;
+    box-sizing           : border-box;
+    text-decoration-color: unset;
+}
+
+html,
+#root {
+    height  : 100vh;
+    width   : 100vw;
+    overflow: hidden;
+
+    display        : flex;
+    justify-content: center;
+}
+
+.App {
+    height   : 100vh;
+    width    : auto;
+    max-width: 1800px;
+
+    display       : flex;
+    flex-direction: column;
+    gap           : 45px;
+
+    overflow: hidden scroll;
+
+    .nav {
+        height: fit-content;
+        width : auto;
+
+        display       : flex;
+        flex-direction: row;
+        gap           : 24px;
+
+        align-items    : flex-start;
+        justify-content: space-between;
+
+        padding: 45px 75px;
+
+        z-index: 1000;
+
+
+        img {
+            position: fixed;
+            top     : 45px;
+            left    : 75px;
+
+            background     : #ffffff10;
+            backdrop-filter: blur(40px);
+        }
+
+        .menu {
+            width  : min-content;
+            columns: 3;
+            gap    : 24px;
+
+            justify-content: flex-start;
+
+            ul {
+                display   : flex;
+                flex-wrap : wrap;
+                gap       : 0 24px;
+                list-style: none;
+
+                li {
+                    position: relative;
+                    @include h5-rg;
+                    cursor   : pointer;
+                    min-width: max-content;
+                }
+
+                li::before {
+                    content   : "";
+                    position  : absolute;
+                    background: #ff7700;
+                    opacity   : .6;
+                    height    : 7px;
+                    width     : 0%;
+
+                    bottom : 4px;
+                    left   : -2.5%;
+                    z-index: -1;
+
+                    transition: width .5s;
+                }
+
+                .active::before {
+                    width: 105%;
+                }
+            }
+        }
+
+        @include scx("sm") {
+            flex-direction: column;
+            padding       : 25px 25px;
+            gap: 0;
+
+            img {
+                position: static;
+            }
+
+            .menu {
+                display        : flex;
+                flex-wrap      : nowrap;
+                flex-direction : column;
+                justify-content: flex-start;
+                align-items: flex-end;
+                gap: 0;
+                margin-left: auto;
+                ul {
+                    display: flex;
+                    flex-direction: row;
+                    flex-wrap: nowrap;
+                }
+            }
+
+        }
+
+        @include sc("sm") {
+            flex-direction : row;
+            padding        : 25px 25px;
+            justify-content: space-between;
+
+            img {
+                position: static;
+            }
+
+            .menu {
+                columns: 33.333% 3;
+            }
+
+        }
+
+        @include sc("md") {
+            flex-direction: row;
+            padding       : 45px 45px;
+
+            .menu {
+                margin-left: auto;
+            }
+
+            &::before {
+                content: "";
+                height : 45px;
+                display: none;
+            }
+        }
+
+    }
+
+    .wraper {
+        display       : flex;
+        flex-direction: row;
+        gap           : 45px;
+
+        @include sc("mn") {
+            padding: 0 25px;
+        }
+
+        @include sc("sm") {
+            padding: 0 45px;
+        }
+    }
+
+}

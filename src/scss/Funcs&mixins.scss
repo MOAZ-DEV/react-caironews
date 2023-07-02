@@ -1,0 +1,43 @@
+* {
+    height    : fit-content;
+    width     : fit-content;
+    padding   : 0;
+    margin    : 0;
+    box-sizing: border-box;
+    text-decoration-color: unset;
+}
+/*variables*/
+$screen-sizes: (
+    "mn":0px,
+    "sm":576px,
+    "md":768px,
+    "lg":945px,
+    "xl":1370px,
+    "xxl":1600px,
+    "xxxl":1800px,
+);
+$ve-context  : (1000*.008) * 1px;
+$f-ve-context: (1000*.031) * .8px;
+
+
+/*mixins*/
+
+@mixin sc($size) {
+    @media (min-width: map-get($screen-sizes, $size)) {
+        @content;
+    }
+}
+@mixin scx($size) {
+    @media (max-width: map-get($screen-sizes, $size)) {
+        @content;
+    }
+}
+
+/*functions*/
+
+@function ptr($px) {
+    @return ($px/$f-ve-context)* 1vw;
+}
+@function fptr($px) {
+    @return (($px/$f-ve-context)* 1.25rem);
+} 
