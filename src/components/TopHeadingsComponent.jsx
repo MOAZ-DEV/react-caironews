@@ -14,7 +14,7 @@ function TopHeadingsComponent(props) {
             category = "general",
             language = "AR";
 
-        fetch(`https://newsapi.org/v2/top-headlines?country=${"EG"}&category=${category}&apiKey=${api_key_3}&pageSize=12`)
+        fetch(`https://newsapi.org/v2/top-headlines?country=${"EG"}&category=${category}&apiKey=${api_key_1}&pageSize=12`)
             .then((response) => response.json())
             .then((data) => {
                 for (let a = 0; a < data.articles.length; a++) {

@@ -29,7 +29,7 @@ function HotNewsBannersComponent(props) {
         }
         console.log(keywords.join(" OR ") + ' OR مصر OR القاهره OR اليوم');
         
-        fetch(link + keywords.join(" OR ") + '&language=ar' + '&apiKey=' + api_key_3 + '&pageSize=8&page=' + (page))
+        fetch(link + keywords.join(" OR ") + '&language=ar' + '&apiKey=' + api_key_2 + '&pageSize=8&page=' + (page))
         .then((response) => response.json())
         .then((data) => {
             for (let a = 0; a < data.articles.length; a++) {
