@@ -9,7 +9,8 @@ function SideBarNews(props) {
         errors: null
     });
     const
-        [articles, setArticles] = useState([]);
+        [articles, setArticles] = useState([]),
+        [page, setPage] = useState(1);
 
     useEffect(() => {
     
@@ -26,6 +27,7 @@ function SideBarNews(props) {
                 console.log(response.data);
                 !(page > 1) ? setArticles(response.data.news) :
                     setArticles([...articles, ...response.data.news]);
+                    console.log(articles + "ola")
             }
             )
             .catch(error => setStatue({ error, isLoading: false }));

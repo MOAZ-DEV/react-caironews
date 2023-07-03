@@ -30,6 +30,7 @@ html,
     gap           : 45px;
 
     overflow: hidden scroll;
+    scroll-behavior: smooth;
 
     .nav {
         height: fit-content;

@@ -2,17 +2,22 @@
 @import "./Funcs&mixins.scss";
 
 .TopHeadingsWarapper {
-    height   : 90vh;
+    height: fit-content;
+    max-height: 90vh;
     min-width: clamp(300px, 25vw, 300px);
     max-width: clamp(300px, 35vw, 400px);
-    
-    display        : grid;
-    
-position: sticky;
-top: 5vh;
 
-overflow: hidden;
-overflow-y: auto ;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    box-sizing: border-box;
+
+    position: sticky;
+    top: 10vh;
+
+    overflow: hidden;
+    overflow-y: auto;
 
     background: #000000db;
 
@@ -36,14 +41,14 @@ overflow-y: auto ;
     }
 
     .lable {
-        width         : auto;
+        width: auto;
 
-        text-align    : end;
+        text-align: end;
         text-transform: uppercase;
 
         background: #00000046;
         backdrop-filter: blur(5px);
-        border-bottom: #ff7700 solid .5px;
+        border-bottom: #ff7700 solid 0.5px;
         color: #ff7700;
 
         padding: 25px;
@@ -54,35 +59,34 @@ overflow-y: auto ;
 
         @include h4-bd;
     }
-.wrap {
-    display        : flex;
-    flex-direction : column;
-    justify-content: left;
-    align-items    : end;
-
-}
+    .wrap {
+        display: flex;
+        flex-direction: column;
+        justify-content: left;
+        align-items: end;
+    }
     .item {
         min-height: fit-content;
 
-        display   : inline-block;
+        display: inline-block;
         direction: rtl;
 
-        border-top: #ffffff3a solid .5px;
-        
+        border-top: #ffffff3a solid 0.5px;
+
         box-sizing: border-box;
-        padding   : 12px 25px;
-        
+        padding: 12px 25px;
+
         gap: 14px;
-        
+
         img {
-            width    : 100%;
+            width: 100%;
             max-width: fill-available;
         }
         .title {
             @include h5-bd;
-            cursor       : pointer;
+            cursor: pointer;
             overflow-wrap: break-word;
-            line-break   : 2;
+            line-break: 2;
 
             a {
                 color: #fff;
@@ -91,7 +95,7 @@ overflow-y: auto ;
 
                 a:hover {
                     text-decoration-color: blue;
-                    text-decoration      : underline;
+                    text-decoration: underline;
                 }
             }
         }
@@ -100,7 +104,7 @@ overflow-y: auto ;
             @include h6-bd;
             cursor: unset;
             color: #fff;
-            opacity: .4;
+            opacity: 0.4;
         }
     }
 }

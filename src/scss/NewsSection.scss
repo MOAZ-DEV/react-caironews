@@ -20,43 +20,44 @@
     }
 
     .wrap {
-        display        : grid;
-        grid-column-gap: 12px;
-        grid-row-gap   : 12px;
-        grid-auto-flow : dense;
+        columns: 1;
+        gap: 12px;
 
         @include sc("sm") {
-            grid-template-columns: repeat(1, auto);
+            columns: 1;
         }
 
         @include sc("md") {
-            grid-template-columns: repeat(2, auto);
+           columns: 2;
         }
 
         @include sc("lg") {
-            grid-template-columns: repeat(2, auto);
+            columns: 2;
         }
 
         @include sc("xl") {
-            grid-template-columns: repeat(3, auto);
+            columns: 3;
         }
 
         @include sc("xxl") {
-            grid-template-columns: repeat(3, auto);
+            columns: 3;
         }
         @include sc("xءxl") {
-            grid-template-columns: repeat(4, auto);
+            columns: 4;
         }
         .item {
             display       : flex;
             flex-direction: column;
             gap: 14px;
             
+            break-inside: avoid-column;
+
             box-sizing: border-box;
             padding   : 0px;
             
             border-top: #ff7700 solid .5px;
             padding-top: 7px;
+            margin-bottom: 14px;
             
             a {
                 color: unset;
