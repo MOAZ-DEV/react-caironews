@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import Axios, * as others from 'axios';
 
-import "../scss/HotNewsBannersComponent.scss";
+import "../scss/NewsSection.scss";
 import imgplaceholder from "../assets/img-placeholder.svg";
 
-function HotNewsBannersComponent(props) {
+function NewsSection(props) {
     const [statue, setStatue] = useState({
         articles: [],
         isLoading: true,
@@ -17,32 +17,20 @@ function HotNewsBannersComponent(props) {
     };
 
     useEffect(() => {
-        var keywords = [];
-        for (let c = 0; c < props.categos.length; c++) {
-            (!props.categos[c].state) ? "" :
-                keywords.push(...keywords, ...props.categos[c].keywords);
-        }
-        console.log(keywords.join(" OR ") + ' OR مصر OR القاهره OR اليوم');
-
+       
         const
-            Host = 'https://newsapi.org/v2/everything?q=',
+            Host = 'https://api.currentsapi.services/v1/latest-news?',
             ApiKey = {
-                X: "78f0aa6465454f1eb935a2c6c7541917",
-                Y: "7bb925a297924e1d8197d89f65054ed6",
-                Z: "3ae0da6375b745bb8f08f6e358df2fd9"
+                X: "mCSBbece4oIAc-0F1BcxtU4Exone9DZtop-uMpNdB6RVz1tv",
             }
-        console.log(`${Host + keywords.join(" OR ")}&language=ar&apiKey=${ApiKey.X}&pageSize=8&page=${page}`)
         Axios
             .get(
-                `${Host + keywords.join(" OR ")}&language=ar&apiKey=${ApiKey.X}&pageSize=8&page=${page}`
+                `${Host}&country=EG&apiKey=${ApiKey.X}&page_size=8&page_number=${page}`
             )
             .then(response => {
-                for (let a = 0; a < response.data.articles.length; a++) {
-                    response.data.articles[a].id = a;
-                }
                 console.log(response.data);
-                !(page > 1) ? setArticles(response.data.articles) :
-                    setArticles([...articles, ...response.data.articles]);
+                !(page > 1) ? setArticles(response.data.news) :
+                    setArticles([...articles, ...response.data.news]);
             }
             )
             .catch(error => setStatue({ error, isLoading: false }));
@@ -64,11 +52,11 @@ function HotNewsBannersComponent(props) {
                         return (<div className="item" key={artic.id} onClick={() => props.Overview(artic)}>
                             <a href={artic.url}>
                                 <div className="wrap">
-                                    <span className="sub">{artic.source.name + " | " + artic.publishedAt.substring(0, 10)}</span>
+                                    <span className="sub">{artic.author + " | " + artic.published.substring(0, 10)}</span>
                                     <span className="title">{artic.title}<br /><br />
                                     </span>
                                 </div>
-                                <img src={artic.urlToImage || imgplaceholder}
+                                <img src={artic.image || imgplaceholder}
                                     fetchpriority="high" onError={onImageError} alt={artic.title} />
                             </a>
                         </div>)
@@ -80,4 +68,15 @@ function HotNewsBannersComponent(props) {
         </>
     )
 }
-export default HotNewsBannersComponent;
+export default NewsSection;
+
+/*
+ var keywords = [];
+        for (let c = 0; c < props.categos.length; c++) {
+            (!props.categos[c].state) ? "" :
+                keywords.push(...keywords, ...props.categos[c].keywords);
+        }
+        console.log(keywords.join(" OR ") + ' OR مصر OR القاهره OR اليوم');
+
+
+*/

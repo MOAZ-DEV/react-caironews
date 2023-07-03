@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import HotNewsBannersComponent from "./components/HotNewsBannersComponent";
+import NewsSection from "./components/NewsSection";
+import SideBarNews from "./components/SideBarNews";
 import Nav from "./components/Nav.jsx";
 import "./scss/App.scss";
 
@@ -71,7 +72,8 @@ function App() {
 
       <Nav categos={categos} recatego={recatego} />
       <div className="wraper">
-        <HotNewsBannersComponent categos={categos} pageNum={pageNum}/>
+        <NewsSection categos={categos} pageNum={pageNum}/>
+        <SideBarNews  categos={categos} pageNum={pageNum}/>
       </div>
 
     </div>
@@ -80,7 +82,6 @@ function App() {
 
 export default App;
 /*
-        <TopHeadingsComponent Overview={artic => setOverviewArtic(artic)} />
    <Overview restOverview={restOverview} artic={overviewArtic}/>
      const [overviewArtic, setOverviewArtic] = useState(false),
   restOverview = () => {
