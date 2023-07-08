@@ -36,7 +36,7 @@ function NewsSection(props) {
             .catch(error => setStatue({ error, isLoading: false }));
 
 
-    }, [props.categos, page]);
+    }, [page]);
     useEffect(() => {
         setPage(props.pageNum);
         console.log(page)
@@ -64,6 +64,11 @@ function NewsSection(props) {
                     })}
 
                 </div>
+                {(statue.isLoading)? <>
+                    <span>
+                        Loading {page}
+                    </span>
+                </>:""}
             </div>
         </>
     )

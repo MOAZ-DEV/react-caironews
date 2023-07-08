@@ -11,6 +11,8 @@
     align-items    : end;
     gap            : 24px;
 
+    margin-bottom: 75px;
+
     .lable {
         width         : auto;
         text-align    : end;
@@ -58,6 +60,9 @@
             border-top: #ff7700 solid .5px;
             padding-top: 7px;
             margin-bottom: 14px;
+
+            transition: height;
+            animation: height articReveal 5s;
             
             a {
                 color: unset;
@@ -118,5 +123,22 @@
                 }
             }
         }
+    }
+    @include scx("lg") {
+        margin-top: 45px;
+    }
+}
+@keyframes articReveal {
+    from {
+        opacity: 0;
+        filter: blur(7);
+        transform: scale(1);
+        max-height: 0;
+    }
+    to {
+        opacity: 1;
+        filter: blur(0);
+        transform: scale(1);
+        max-height: fit-content;
     }
 }

@@ -1,0 +1,165 @@
+@import "fonts.scss";
+@import "Funcs&mixins.scss";
+.searchBar {
+    height: 45px;
+    width: fit-content;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    background: #ffffffbb;
+    backdrop-filter: blur(6px);
+
+    .dropDownMenu {
+        color: #000;
+    }
+    .searchInputWrap {
+        width: max-content;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        position: relative;
+        padding: 0 0 0 20px;
+
+        input {
+            height: 45px;
+            width: clamp(300px, 800px, calc(100vw - 750px));
+            outline: 0;
+            border: 0;
+            cursor: text;
+            background: transparent;
+
+            @include h5-rg;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+        button {
+            height: 45px;
+            width: fit-content;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            outline: 0;
+            border: 0;
+            background: transparent;
+            padding: 20px;
+            img {
+                height: 14px;
+                width: 14px;
+                cursor: pointer;
+            }
+        }
+    }
+    @include scx("lg") {
+        width: 100%;
+        position: fixed;
+        top: 45px;
+        padding: 0 45px;
+
+        .searchInputWrap {
+          width: 100%;
+          padding-right: 0;
+    
+            input {
+                width: 100%;
+               
+            }
+            button {
+                padding-right: 0;
+            }
+            
+        }
+        .dropDownMenu {
+            padding-left: 0;
+        }
+    }
+}
+
+.dropDownMenu {
+    width: fit-content;
+    display: inline-block;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+    padding: 0 20px;
+    color: #fff;
+
+    span {
+        height: 45px;
+        min-height: max-content;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 45px;
+        cursor: pointer;
+        @include h5-rg;
+        img {
+        }
+    }
+    ul {
+        height: 0;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        list-style: none;
+
+        overflow-x: hidden;
+
+        padding: 0px 0;
+        position: absolute;
+        left: 0;
+        z-index: 100;
+
+        transition: height 0.5s;
+
+        scrollbar-width: thin;
+
+        &::-webkit-scrollbar {
+            background: #000;
+            color: #fff;
+            width: 8px;
+            padding: 4px;
+        }
+        &::-webkit-scrollbar-thumb {
+            border: 3px solid rgba(0, 0, 0, 0);
+            background-clip: padding-box;
+            border-radius: 9999px;
+            background-color: #aaaaaa;
+        }
+        li {
+            min-height: 45px;
+            max-height: 45px;
+            width: auto;
+            display: flex;
+            padding: 0 24px;
+            align-items: center;
+            color: #fff;
+            background: #000;
+            border-top: solid 0.5px #ffffff20;
+            cursor: pointer;
+            @include h5-rg;
+        }
+    }
+    .active {
+        min-height: clamp(300px, 30vh, 600px);
+    }
+    &::after {
+        content: "";
+        height: 50%;
+        width: 1px;
+        background: #000;
+        right: -1px;
+        top: 30%;
+        z-index: 200;
+        display: block;
+        position: absolute;
+    }
+    &:hover {
+        span {
+            text-decoration: underline;
+        }
+    }
+}
